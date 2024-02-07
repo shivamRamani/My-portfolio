@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --text: #ffffff;
+    --background: #000000;
+    --primary: #9EFD49;
+    --secondary: #9B59D7;
+    --accent: #C7FF94;
+    line-height: 0.75;
+
+  }
+  .light {
+    --text: #000000;
+    --background: #ffffff;
+    --primary: #56b602;
+    --secondary: #6828a4;
+    --accent: #346b00;
+  }
+
+  h1 {
+    @apply text-5xl lg:text-9xl font-bold p-0 m-0;
+  }
+  h2 {
+    @apply text-4xl lg:text-6xl font-semibold;
+  }
+  h3 {
+    @apply text-3xl lg:text-5xl font-semibold;
+  }
+  h4 {
+    @apply text-2xl lg:text-4xl font-semibold;
+  }
+  h5 {
+    @apply text-xl lg:text-3xl font-semibold;
+  }
+  h6 {
+    @apply text-lg lg:text-2xl font-medium;
+  }
+  p {
+    @apply text-base lg:text-xl;
+  }
+  span {
+    @apply text-base;
+  }
+
+  .font-outline-2 {
+    -webkit-text-stroke: 2px black;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px black;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
