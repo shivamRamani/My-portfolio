@@ -7,11 +7,9 @@
   :root {
     --text: #ffffff;
     --background: #000000;
-    --primary: #9EFD49;
+    --primary: #c4f072;
     --secondary: #9B59D7;
     --accent: #C7FF94;
-    line-height: 0.75;
-
   }
   .light {
     --text: #000000;
@@ -22,7 +20,7 @@
   }
 
   h1 {
-    @apply text-5xl lg:text-9xl font-bold p-0 m-0;
+    @apply text-5xl lg:text-9xl font-bold p-0 my-0 ;
   }
   h2 {
     @apply text-4xl lg:text-6xl font-semibold;
