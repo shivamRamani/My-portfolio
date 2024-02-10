@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+* { cursor:none }
 
 @layer base {
   :root {
@@ -18,6 +19,8 @@
     --secondary: #6828a4;
     --accent: #346b00;
   }
+
+  
 
   h1 {
     @apply text-5xl lg:text-9xl font-bold p-0 my-0 ;
