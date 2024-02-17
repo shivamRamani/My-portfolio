@@ -12,14 +12,6 @@ export const CustomCursor = (props: Props) => {
     const { size = 3 } = props;
     const { mouseX, mouseY } = useMousePosition();
 
-    const variants = {
-        default: {
-            height: 20 * size + "px",
-            left: mouseX,
-            top: mouseY,
-        },
-    };
-
     return (
         <motion.div
             className={cn(
@@ -39,7 +31,6 @@ export const CustomCursor = (props: Props) => {
                     duration: 0.15,
                 },
             }}
-            // variants={variants}
         />
     );
 };

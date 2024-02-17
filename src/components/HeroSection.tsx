@@ -1,25 +1,53 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CustomCursor } from "./CustomCursor";
 import { useMousePosition } from "@/hooks/useMousePosition";
-import { motion } from "framer-motion";
+import {
+    motion,
+    useMotionValueEvent,
+    useScroll,
+    useViewportScroll,
+} from "framer-motion";
 import { cn } from "@/utils/cn";
+import { useCursorContext } from "@/hooks/useCursorContext";
 
 export const HeroSection = () => {
-    const [cursorSize, setCursorSize] = useState(2);
-    const { mouseX, mouseY } = useMousePosition();
     const divRef = useRef<HTMLDivElement>(null);
+    const heroDivRef = useRef<HTMLDivElement>(null);
+    const { setCursorSize, cursorSize } = useCursorContext();
+    const { mouseX, mouseY } = useMousePosition();
+    const { scrollY, scrollYProgress } = useScroll();
+
+    const [currentScrollY, setCurrentScrollY] = useState(scrollY.get());
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        setCurrentScrollY(latest);
+    });
+
+    useEffect(() => {
+        const currValue = heroDivRef.current;
+        if (
+            currValue?.offsetTop - currentScrollY <= mouseY &&
+            currValue?.offsetTop + currValue.offsetHeight - currentScrollY >=
+                mouseY
+        ) {
+            setCursorSize(16);
+        } else {
+            setCursorSize(2);
+        }
+    }, [
+        heroDivRef.current?.offsetTop,
+        heroDivRef.current?.offsetHeight,
+        mouseY,
+        setCursorSize,
+        currentScrollY,
+    ]);
 
     return (
         <div
+            ref={heroDivRef}
             className="my-10 w-full h-full bg-primary px-16 py-24 text-background"
-            onMouseEnter={() => {
-                setCursorSize(16);
-            }}
-            onMouseLeave={() => {
-                setCursorSize(1);
-            }}
         >
             <div className="flex justify-between w-full max-w-6xl mx-auto">
                 <div className="">
@@ -39,17 +67,25 @@ export const HeroSection = () => {
                         maskPosition: `${
                             mouseX -
                             divRef.current?.offsetLeft -
-                            cursorSize * 10
+                            (cursorSize > 10 ? 16 : 0) * 10
                         }px ${
-                            mouseY - divRef.current?.offsetTop - cursorSize * 10
+                            mouseY +
+                            currentScrollY -
+                            divRef.current?.offsetTop -
+                            (cursorSize > 10 ? 16 : 0) * 10
                         }px`,
                         maskSize: `${cursorSize * 20}px`,
                         WebkitMaskSize: `${cursorSize * 20}px`,
+                        opacity: cursorSize > 10 ? 1 : 0,
                     }}
                     transition={{
                         type: "just",
                         stiffness: 10,
                         duration: 0.006,
+                        opacity: {
+                            ease: "easeInOut",
+                            duration: 0.15,
+                        },
                     }}
                     style={{
                         maskImage: "url(./mask.svg)",
@@ -83,6 +119,7 @@ export const HeroSection = () => {
                     }}
                 ></div>
             </div>
+
             <CustomCursor size={cursorSize} />
         </div>
     );
