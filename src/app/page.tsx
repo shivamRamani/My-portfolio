@@ -1,13 +1,16 @@
 import { HeroSection } from "@/components/HeroSection";
 import { About } from "@/components/About";
 import { CursorContextProvide } from "@/contexts/CursorContext";
+import { BodyLayout } from "@/layouts/BodyLayout";
 
 export default function Home() {
     return (
         <CursorContextProvide>
-            <main className="flex min-h-screen flex-col bg-background">
+            <main className=" bg-background">
                 <HeroSection />
-                <About />
+                <BodyLayout>
+                    <About />
+                </BodyLayout>
             </main>
         </CursorContextProvide>
     );

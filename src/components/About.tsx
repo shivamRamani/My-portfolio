@@ -5,7 +5,7 @@ import { useCursorContext } from "@/hooks/useCursorContext";
 export const About = (): JSX.Element => {
     const { setCursorSize } = useCursorContext();
     return (
-        <div className="text-white font-custom py-20 px-60 tracking-widest opacity-70 ">
+        <div className=" font-custom text-white py-20 px-60 tracking-widest opacity-70 mt-[80rem]">
             <h6 className="font-medium">
                 {"Hello, I'm Shivam Ramani, Web Developer & Problem Solver."}
                 <br />

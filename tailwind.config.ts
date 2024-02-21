@@ -25,7 +25,11 @@ const config: Config = {
                 "11xl": ["12rem", "0.75"],
             },
             animation: {
-                liquid: "spin 40s linear infinite, liquid 10s linear infinite",
+                liquid: "spin 80s linear infinite, liquid 40s linear infinite",
+                liquid2:
+                    "reverseSpin 40s linear infinite, liquid2 40s linear infinite",
+                liquid3:
+                    "spin 80s linear infinite, liquid3 40s linear infinite",
             },
             keyframes: {
                 liquid: {
@@ -43,6 +47,48 @@ const config: Config = {
                     },
                     "100%": {
                         borderRadius: "36% 64% 70% 30% / 30% 62% 38% 70%",
+                    },
+                },
+                liquid2: {
+                    "0%": {
+                        borderRadius: "28% 72% 22% 78% / 70% 48% 52% 30%",
+                    },
+                    "25%": {
+                        borderRadius: "55% 45% 55% 45% / 45% 29% 71% 55%",
+                    },
+                    "50%": {
+                        borderRadius: "36% 64% 70% 30% / 30% 62% 38% 70%",
+                    },
+                    "75%": {
+                        borderRadius: "40% 76% 76% 24% / 74% 57% 43% 26% ",
+                    },
+                    "100%": {
+                        borderRadius: "28% 72% 22% 78% / 70% 48% 52% 30%",
+                    },
+                },
+                liquid3: {
+                    "0%": {
+                        borderRadius: "55% 45% 55% 45% / 45% 29% 71% 55%",
+                    },
+                    "25%": {
+                        borderRadius: "36% 64% 70% 30% / 30% 62% 38% 70%",
+                    },
+                    "50%": {
+                        borderRadius: "40% 76% 76% 24% / 74% 57% 43% 26% ",
+                    },
+                    "75%": {
+                        borderRadius: "28% 72% 22% 78% / 70% 48% 52% 30%",
+                    },
+                    "100%": {
+                        borderRadius: "55% 45% 55% 45% / 45% 29% 71% 55%",
+                    },
+                },
+                reverseSpin: {
+                    "0%": {
+                        transform: "rotate(360deg)",
+                    },
+                    "100%": {
+                        transform: "rotate(0deg)",
                     },
                 },
             },
