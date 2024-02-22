@@ -15,7 +15,7 @@ export const CustomCursor = (props: Props) => {
     return (
         <motion.div
             className={cn(
-                "aspect-square rounded-full fixed bg-white -translate-x-1/2 -translate-y-1/2 z-10 mix-blend-difference  pointer-events-none"
+                "aspect-square rounded-full fixed bg-white -translate-x-1/2 -translate-y-1/2 z-50 mix-blend-difference  pointer-events-none"
             )}
             animate={{
                 height: 20 * size + "px",

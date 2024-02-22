@@ -4,24 +4,28 @@ import { useEffect, useRef, useState } from "react";
 import { CustomCursor } from "./CustomCursor";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import {
+    MotionValue,
     motion,
     useMotionValueEvent,
     useScroll,
     useTransform,
-    useViewportScroll,
 } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { useCursorContext } from "@/hooks/useCursorContext";
 
-export const HeroSection = () => {
+type TProps = {
+    scale: MotionValue<number>;
+    display: MotionValue<"none" | "flex">;
+};
+
+export const HeroSection = (props: TProps) => {
+    const { scale, display } = props;
     const divRef = useRef<HTMLDivElement>(null);
     const heroDivRef = useRef<HTMLDivElement>(null);
     const bodyMaskDivRef = useRef<HTMLDivElement>(null);
     const { setCursorSize, cursorSize } = useCursorContext();
     const { mouseX, mouseY } = useMousePosition();
-    const { scrollY, scrollYProgress } = useScroll({
-        offset: ["start end", "end end"],
-    });
+
     const [bodyMaskDivPosition, setBodyMaskDivPosition] = useState({
         x: 0,
         y: 0,
@@ -29,7 +33,6 @@ export const HeroSection = () => {
 
     useEffect(() => {
         const currValue = divRef.current;
-        console.log(currValue);
         if (
             currValue?.offsetTop <= mouseY &&
             currValue?.offsetTop + currValue.offsetHeight >= mouseY &&
@@ -55,10 +58,11 @@ export const HeroSection = () => {
         });
     }, []);
 
-    const scale = useTransform(scrollYProgress, [1, 0.5], [80, 1]);
-
     return (
-        <div className="fixed top-0 w-full h-full bg-background overflow-hidden">
+        <motion.div
+            style={{ display: display }}
+            className="flex fixed top-0 w-full h-full bg-background overflow-hidden"
+        >
             <motion.div
                 style={{
                     transformOrigin: `${bodyMaskDivPosition?.x}px ${bodyMaskDivPosition?.y}px`,
@@ -109,7 +113,7 @@ export const HeroSection = () => {
                                 maskPosition: "-100px -100px",
                                 maskRepeat: "no-repeat",
                             }}
-                            className="w-fit absolute z-20 text-white bg-background"
+                            className="w-fit absolute z-20 text-background bg-white"
                         >
                             <h1 className="text-9xl select-none font-bold mb-10">
                                 {"Hiii , I'm"}
@@ -129,7 +133,7 @@ export const HeroSection = () => {
                             type: "tween",
                         }}
                         className={cn(
-                            "h-96 w-96 shrink-0 my-auto ml-12 grid place-items-center"
+                            "h-96 w-96 z-50 shrink-0 my-auto ml-12 grid place-items-center"
                         )}
                     >
                         <div className="animate-liquid3 size-96 shrink-0 my-auto z-10 bg-black/10 grid place-items-center">
@@ -162,6 +166,6 @@ export const HeroSection = () => {
 
                 <CustomCursor size={cursorSize} />
             </motion.div>
-        </div>
+        </motion.div>
     );
 };
