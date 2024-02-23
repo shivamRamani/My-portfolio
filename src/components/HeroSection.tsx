@@ -2,14 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CustomCursor } from "./CustomCursor";
+import { AnimatedText } from "./AnimatedText";
 import { useMousePosition } from "@/hooks/useMousePosition";
-import {
-    MotionValue,
-    motion,
-    useMotionValueEvent,
-    useScroll,
-    useTransform,
-} from "framer-motion";
+import { MotionValue, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { useCursorContext } from "@/hooks/useCursorContext";
 
@@ -76,12 +71,15 @@ export const HeroSection = (props: TProps) => {
                             <h1 className="text-9xl select-none font-bold mb-10">
                                 {"Hiii , I'm"}
                             </h1>
-                            <h1 className="text-10xl select-none font-custom font-extrabold">
-                                SHIVAM
-                            </h1>
-                            <h1 className="text-10xl select-none font-custom font-extrabold">
-                                RAMANI
-                            </h1>
+                            <AnimatedText
+                                text="SHIVAM"
+                                className="text-10xl select-none font-custom font-extrabold mb-2"
+                            />
+                            <AnimatedText
+                                text="RAMANI"
+                                className="text-10xl select-none font-custom font-extrabold"
+                                animationTransformFrom="translate(0,-100%)"
+                            />
                         </div>
                         <motion.div
                             ref={divRef}

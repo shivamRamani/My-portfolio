@@ -31,7 +31,7 @@ export default function Home() {
 
     return (
         <CursorContextProvide>
-            <main className=" bg-background">
+            <main className="bg-background h-full w-full">
                 {<HeroSection scale={scale} display={display} />}
                 <BodyLayout>
                     <About ref={aboutRef} />

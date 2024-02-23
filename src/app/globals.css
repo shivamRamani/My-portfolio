@@ -51,9 +51,6 @@
   p {
     @apply text-base lg:text-xl;
   }
-  span {
-    @apply text-base;
-  }
 
   .font-outline-2 {
     -webkit-text-stroke: 2px black;

@@ -5,8 +5,11 @@ import React, { forwardRef } from "react";
 const About = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <>
-            <div ref={ref} className="h-[80rem] -z-10"></div>
-            <div className="font-custom text-background max-w-[60rem] mx-auto tracking-widest mb-96">
+            <div
+                ref={ref}
+                className="h-[80rem] -z-10 relative bg-background"
+            ></div>
+            <div className="font-custom text-white bg-background w-full max-w-6xl mx-auto tracking-widest mb-96">
                 <h6 className="font-medium">
                     {
                         "Hello, I'm Shivam Ramani, Web Developer & Problem Solver."
