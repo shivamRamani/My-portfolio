@@ -65,7 +65,7 @@ export const HeroSection = (props: TProps) => {
                 }}
                 className="w-full bg-white text-background overflow-hidden grid items-center my-10 py-20"
             >
-                <div className="flex w-full max-w-6xl mx-auto justify-between">
+                <div className="flex w-full max-w-7xl mx-auto justify-between">
                     <div ref={heroDivRef} className="flex w-full">
                         <div className="">
                             <h1 className="text-9xl select-none font-bold mb-10">
@@ -73,11 +73,11 @@ export const HeroSection = (props: TProps) => {
                             </h1>
                             <AnimatedText
                                 text="SHIVAM"
-                                className="text-10xl select-none font-custom font-extrabold mb-2"
+                                className="text-11xl select-none font-custom font-extrabold"
                             />
                             <AnimatedText
                                 text="RAMANI"
-                                className="text-10xl select-none font-custom font-extrabold"
+                                className="text-11xl select-none font-custom font-extrabold"
                                 animationTransformFrom="translate(0,-100%)"
                             />
                         </div>
@@ -116,10 +116,10 @@ export const HeroSection = (props: TProps) => {
                             <h1 className="text-9xl select-none font-bold mb-10">
                                 {"Hiii , I'm"}
                             </h1>
-                            <h1 className="text-10xl select-none font-custom font-extrabold">
+                            <h1 className="text-11xl select-none font-custom font-extrabold">
                                 WEB
                             </h1>
-                            <h1 className="text-10xl select-none font-custom font-extrabold">
+                            <h1 className="text-11xl select-none font-custom font-extrabold">
                                 DEVELOPER
                             </h1>
                         </motion.div>
@@ -128,7 +128,8 @@ export const HeroSection = (props: TProps) => {
                         ref={bodyMaskDivRef}
                         style={{ scale }}
                         transition={{
-                            type: "tween",
+                            duration: 4,
+                            ease: "easeIn",
                         }}
                         className={cn(
                             "h-96 w-96 z-50 shrink-0 my-auto ml-12 grid place-items-center"

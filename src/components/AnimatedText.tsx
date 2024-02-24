@@ -1,12 +1,13 @@
 import { cn } from "@/utils/cn";
-import { AnimationProps, motion } from "framer-motion";
-import { HTMLProps } from "react";
+import { AnimationProps, motion, useAnimate } from "framer-motion";
+import { Fragment, HTMLProps, useEffect, useRef } from "react";
 
 type Props = {
     text: string;
     className?: HTMLProps<HTMLElement>["className"];
     animationTransformFrom?: string;
     animationTransformTo?: string;
+    showAnimation?: boolean;
 };
 
 export const AnimatedText = (props: Props) => {
@@ -15,6 +16,7 @@ export const AnimatedText = (props: Props) => {
         className = "",
         animationTransformFrom = "translate(0,100%)",
         animationTransformTo = "translate(0,0)",
+        showAnimation = true,
     } = props;
 
     const variants: AnimationProps["variants"] = {
@@ -23,9 +25,6 @@ export const AnimatedText = (props: Props) => {
             transform: animationTransformFrom,
             transition: {
                 ease: "easeOut",
-                // type: " spring",
-                // damping: 12,
-                // stiffness: 100,
                 duration: 1,
             },
         },
@@ -34,9 +33,6 @@ export const AnimatedText = (props: Props) => {
             transform: animationTransformTo,
             transition: {
                 ease: "easeOut",
-                // type: " spring",
-                // damping: 12,
-                // stiffness: 100,
                 duration: 0.8,
             },
         },
@@ -45,7 +41,7 @@ export const AnimatedText = (props: Props) => {
     return (
         <motion.div
             initial="initial"
-            animate="visible"
+            animate={showAnimation ? "visible" : "initial"}
             transition={{
                 staggerChildren: 0.2,
                 delayChildren: 0,
@@ -54,14 +50,19 @@ export const AnimatedText = (props: Props) => {
             }}
             className={cn("overflow-hidden", className)}
         >
-            {text?.split("").map((char, index) => (
-                <motion.span
-                    key={index}
-                    className="inline-block"
-                    variants={variants}
-                >
-                    {char}
-                </motion.span>
+            {text?.split(/\s+/).map((word, wordIndex) => (
+                <Fragment key={wordIndex}>
+                    {word.split("").map((char, charIndex) => (
+                        <motion.span
+                            key={charIndex}
+                            className="inline-block"
+                            variants={variants}
+                        >
+                            {char}
+                        </motion.span>
+                    ))}
+                    &nbsp;
+                </Fragment>
             ))}
         </motion.div>
     );

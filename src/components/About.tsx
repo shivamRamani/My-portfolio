@@ -1,15 +1,46 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
+import { AnimatedText } from "./AnimatedText";
+import { motion, useAnimate, useInView } from "framer-motion";
 
 const About = forwardRef<HTMLDivElement>((props, ref) => {
+    const [scope, animate] = useAnimate();
+
+    const isInView = useInView(scope, {
+        margin: "0% 0px -40% 0px",
+    });
+    useEffect(() => {
+        if (isInView) {
+            animate(
+                scope.current,
+                { opacity: 1 },
+                { ease: "easeOut", delay: 0.3 }
+            );
+        } else {
+            animate(
+                scope.current,
+                { opacity: 0 },
+                { ease: "easeOut", delay: 0.3 }
+            );
+        }
+    }, [animate, isInView, scope]);
+
     return (
         <>
             <div
                 ref={ref}
                 className="h-[80rem] -z-10 relative bg-background"
             ></div>
-            <div className="font-custom text-white bg-background w-full max-w-6xl mx-auto tracking-widest mb-96">
+            <motion.div
+                ref={scope}
+                className="font-custom text-white w-full max-w-6xl mx-auto tracking-widest mb-[40rem]"
+            >
+                <AnimatedText
+                    text="ABOUT ME"
+                    className="text-5xl font-extrabold mb-4"
+                    showAnimation={isInView}
+                />
                 <h6 className="font-medium">
                     {
                         "Hello, I'm Shivam Ramani, Web Developer & Problem Solver."
@@ -24,7 +55,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
                 collaborate and turn your vision into reality. Explore my
                 portfolio to see how I can elevate your online presence.`}
                 </h6>
-            </div>
+            </motion.div>
         </>
     );
 });

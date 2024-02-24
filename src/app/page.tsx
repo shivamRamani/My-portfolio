@@ -5,7 +5,9 @@ import { CursorContextProvide } from "@/contexts/CursorContext";
 import { BodyLayout } from "@/layouts/BodyLayout";
 import Lenis from "@studio-freight/lenis";
 import { useEffect, useRef } from "react";
-import { useScroll, useTransform } from "framer-motion";
+import { cubicBezier, useScroll, useTransform } from "framer-motion";
+import { CustomCursor } from "@/components/CustomCursor";
+import { useCursorContext } from "@/hooks/useCursorContext";
 
 export default function Home() {
     const aboutRef = useRef();
@@ -13,7 +15,9 @@ export default function Home() {
         target: aboutRef,
         offset: ["start start", "end center"],
     });
-    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 10, 80]);
+    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 10, 80], {
+        ease: cubicBezier(0.61, 1, 0.88, 1),
+    });
     const display = useTransform(scrollYProgress, (pos) => {
         return pos === 1 ? "none" : "flex";
     });
