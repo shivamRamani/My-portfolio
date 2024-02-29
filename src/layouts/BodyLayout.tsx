@@ -3,5 +3,5 @@ export const BodyLayout = ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
-    return <div className="absolute w-full">{children}</div>;
+    return <div className="absolute w-full mb-96">{children}</div>;
 };

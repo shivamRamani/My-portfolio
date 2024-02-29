@@ -21,7 +21,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
             animate(
                 scope.current,
                 { opacity: 0 },
-                { ease: "easeOut", delay: 0.3 }
+                { ease: "easeOut", delay: 0.2 }
             );
         }
     }, [animate, isInView, scope]);
@@ -34,7 +34,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
             ></div>
             <motion.div
                 ref={scope}
-                className="font-custom text-white w-full max-w-6xl mx-auto tracking-widest mb-[40rem]"
+                className="font-custom text-white w-full max-w-6xl mx-auto tracking-widest"
             >
                 <AnimatedText
                     text="ABOUT ME"

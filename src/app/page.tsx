@@ -8,6 +8,8 @@ import { useEffect, useRef } from "react";
 import { cubicBezier, useScroll, useTransform } from "framer-motion";
 import { CustomCursor } from "@/components/CustomCursor";
 import { useCursorContext } from "@/hooks/useCursorContext";
+import { Skills } from "@/components/Skills";
+import { Projects } from "@/components/Projects";
 
 export default function Home() {
     const aboutRef = useRef();
@@ -39,6 +41,7 @@ export default function Home() {
                 {<HeroSection scale={scale} display={display} />}
                 <BodyLayout>
                     <About ref={aboutRef} />
+                    <Projects />
                 </BodyLayout>
             </main>
         </CursorContextProvide>
