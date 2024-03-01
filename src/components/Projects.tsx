@@ -5,11 +5,15 @@ import { cn } from "@/utils/cn";
 
 const projectsData = [
     {
-        image: "/dummy_project.png",
+        image: "/project1.png",
         desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`,
     },
     {
-        image: "/dummy_project.png",
+        image: "/project2.png",
+        desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`,
+    },
+    {
+        image: "/project3.png",
         desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`,
     },
 ];
@@ -19,9 +23,9 @@ export const Projects = () => {
         <div className="h-fit w-full bg-white flex flex-col pb-20">
             <AnimatedText
                 text={"PROJECTS"}
-                className="font-extrabold text-7xl"
+                className="font-extrabold text-7xl w-full bg-white sticky top-0 z-10"
             />
-            <div className="space-y-32 max-w-6xl h-full w-full mx-auto">
+            <div className="space-y-20 max-w-6xl h-full w-full mx-auto my-20">
                 {projectsData.map((project, index) => (
                     <div
                         key={index}
@@ -42,14 +46,14 @@ export const Projects = () => {
                                 <AnimatedText text={`0${index + 1}`} />
                                 /04
                             </h2>
-                            <h6 className="mt-16">
-                                {` Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. I`}
+                            <h6 className="mt-16 font-normal">
+                                {project.desc}
                             </h6>
                         </div>
                         <div className="h-full aspect-square relative shrink-0 border-black border-4 border-t-2 grayscale hover:grayscale-[50%] transition-all duration-500 ease-out">
                             <Image
-                                src={"/dummy_project.png"}
-                                alt="hi"
+                                src={project.image}
+                                alt={`project${index + 1}`}
                                 fill
                                 objectFit="cover"
                                 className=""

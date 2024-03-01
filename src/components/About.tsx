@@ -2,7 +2,14 @@
 
 import React, { forwardRef, useEffect, useState } from "react";
 import { AnimatedText } from "./AnimatedText";
-import { motion, useAnimate, useInView } from "framer-motion";
+import {
+    cubicBezier,
+    motion,
+    useAnimate,
+    useInView,
+    useScroll,
+    useTransform,
+} from "framer-motion";
 
 const About = forwardRef<HTMLDivElement>((props, ref) => {
     const [scope, animate] = useAnimate();
@@ -34,14 +41,14 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
             ></div>
             <motion.div
                 ref={scope}
-                className="font-custom text-white w-full max-w-6xl mx-auto tracking-widest"
+                className="flex flex-col font-custom text-white w-full tracking-widest h-screen sticky top-0"
             >
                 <AnimatedText
                     text="ABOUT ME"
-                    className="text-5xl font-extrabold mb-4"
+                    className="font-extrabold text-7xl w-full text-white bg-background  z-10"
                     showAnimation={isInView}
                 />
-                <h6 className="font-medium">
+                <h6 className="font-light h-full grid max-w-4xl text-center mx-auto my-auto items-center leading-10">
                     {
                         "Hello, I'm Shivam Ramani, Web Developer & Problem Solver."
                     }
