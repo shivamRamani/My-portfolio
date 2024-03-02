@@ -50,7 +50,11 @@ export const Projects = () => {
                                 {project.desc}
                             </h6>
                         </div>
-                        <div className="h-full aspect-square relative shrink-0 border-black border-4 border-t-2 grayscale hover:grayscale-[50%] transition-all duration-500 ease-out">
+                        <div
+                            className={cn(
+                                `h-full aspect-square relative shrink-0 grayscale hover:grayscale-[50%] transition-all duration-500 hover:shadow-none ease-out `
+                            )}
+                        >
                             <Image
                                 src={project.image}
                                 alt={`project${index + 1}`}
@@ -62,6 +66,12 @@ export const Projects = () => {
                     </div>
                 ))}
             </div>
+            {/* <div>
+                <AnimatedText
+                    text={"CONTACT ME"}
+                    className="font-bold text-11xl w-full  sticky top-0 z-10 overflow-visible -mb-36"
+                />
+            </div> */}
         </div>
     );
 };

@@ -10,6 +10,7 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { useCursorContext } from "@/hooks/useCursorContext";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
+import { ContactMe } from "@/components/ContactMe";
 
 export default function Home() {
     const aboutRef = useRef();
@@ -42,6 +43,7 @@ export default function Home() {
                 <BodyLayout>
                     <About ref={aboutRef} />
                     <Projects />
+                    <ContactMe />
                 </BodyLayout>
             </main>
         </CursorContextProvide>

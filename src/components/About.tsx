@@ -15,7 +15,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
     const [scope, animate] = useAnimate();
 
     const isInView = useInView(scope, {
-        margin: "0% 0px -40% 0px",
+        margin: "0% 0px -100% 0px",
     });
     useEffect(() => {
         if (isInView) {
@@ -41,7 +41,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
             ></div>
             <motion.div
                 ref={scope}
-                className="flex flex-col font-custom text-white w-full tracking-widest h-screen sticky top-0"
+                className="flex flex-col font-custom text-white w-full tracking-widest h-screen sticky top-0 mb-80"
             >
                 <AnimatedText
                     text="ABOUT ME"
